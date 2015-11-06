@@ -36,13 +36,29 @@ myApp.service('nameService', function() {
 
 myApp.controller('mainController', ['$scope', '$location', '$log', 'nameService', function($scope, $location, $log, nameService) {
     
-    $scope.person ={
+    $scope.people =[
+        {
         name: 'John Doe',
         address: '555 Main St.',
         city: 'New York',
         state: 'NY',
         zip: '11211'
-    }
+        },
+        {
+        name: 'Jane Manson',
+        address: '45 York St.',
+        city: 'Summit',
+        state: 'NJ',
+        zip: '07901'
+        },
+        {
+        name: 'Peter Dooley',
+        address: '12 Pleasant St.',
+        city: 'Readfield',
+        state: 'ME',
+        zip: '45633'
+        }
+    ]
     
     $scope.formattedAddress = function(person) {
       
@@ -58,11 +74,11 @@ myApp.controller('mainController', ['$scope', '$location', '$log', 'nameService'
         
     })
     
-    $log.log(nameService.name);
-    $log.log(nameService.namelength());
+//    $log.log(nameService.name);
+//    $log.log(nameService.namelength());
     
-    $log.main = 'Property of Main';
-    $log.log($log);  
+//    $log.main = 'Property of Main';
+//    $log.log($log);  
     
 }]);
 
@@ -78,8 +94,8 @@ myApp.controller('secondController', ['$scope', '$location', '$log', '$routePara
         
     })
     
-    $log.main = 'Property of Second';
-    $log.log($log); 
+//    $log.main = 'Property of Second';
+//    $log.log($log); 
     
 }]);
 
@@ -92,7 +108,8 @@ myApp.directive("searchResults", function() {
         scope: {
             personObject: "=",
             formattedAddressFunction: "&"
-        }
+        },
+        transclude: true
     }   
 })
 
